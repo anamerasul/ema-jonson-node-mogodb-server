@@ -4,8 +4,8 @@ import "dotenv/config"
 
 import { MongoClient, ServerApiVersion, ObjectId } from 'mongodb';
 
-const https = require('https');
-const http = require('http');
+// const https = require('https');
+// const http = require('http');
 
 // const fs = require('fs');
 
@@ -117,135 +117,135 @@ app.listen(port, () => {
 })
 
 
-const httpServer = http.createServer(app);
-const httpsServer = https.createServer({
-}, app);
+// const httpServer = http.createServer(app);
+// const httpsServer = https.createServer({
+// }, app);
 
-httpServer.listen(80, () => {
-    console.log('HTTP Server running on port 80');
+// httpServer.listen(80, () => {
+//     console.log('HTTP Server running on port 80');
 
-    const run = async () => {
-        try {
-            await client.connect();
-            const productsCollection = client.db("emajonsonNodeMongo").collection("products");
-            console.log("db connected to mongo")
+//     const run = async () => {
+//         try {
+//             await client.connect();
+//             const productsCollection = client.db("emajonsonNodeMongo").collection("products");
+//             console.log("db connected to mongo")
 
-            // get product
+//             // get product
 
-            // get product 
+//             // get product
 
-            app.get('/product', async (req, res) => {
-                const query = req.body
-                const page = parseInt(req.query.page)
-                const size = parseInt(req.query.size)
-
-
-
-                console.log(query)
-                const cursor = productsCollection.find(query)
-
-                let products;
-
-                if (page || size) {
-                    products = await cursor.skip(page * size).limit(size).toArray()
-
-                }
-
-                else {
-                    products = await cursor.toArray()
-
-                }
-
-
-                res.send(products)
-
-
-            })
-
-
-            app.get('/product-count', async (req, res) => {
-                const query = {}
-                const cursor = productsCollection.find(query)
-
-                const count = await productsCollection.estimatedDocumentCount()
-                res.send({ count })
-
-            })
+//             app.get('/product', async (req, res) => {
+//                 const query = req.body
+//                 const page = parseInt(req.query.page)
+//                 const size = parseInt(req.query.size)
 
 
 
-        }
+//                 console.log(query)
+//                 const cursor = productsCollection.find(query)
+
+//                 let products;
+
+//                 if (page || size) {
+//                     products = await cursor.skip(page * size).limit(size).toArray()
+
+//                 }
+
+//                 else {
+//                     products = await cursor.toArray()
+
+//                 }
 
 
-        finally {
-            // await client.close();
-        }
-
-    }
-    run().catch(console.dir);
-
-});
-
-httpsServer.listen(443, () => {
-    console.log('HTTPS Server running on port 443');
-
-    const run = async () => {
-        try {
-            await client.connect();
-            const productsCollection = client.db("emajonsonNodeMongo").collection("products");
-            console.log("db connected to mongo")
-
-            // get product
-
-            // get product 
-
-            app.get('/product', async (req, res) => {
-                const query = req.body
-                const page = parseInt(req.query.page)
-                const size = parseInt(req.query.size)
+//                 res.send(products)
 
 
-
-                console.log(query)
-                const cursor = productsCollection.find(query)
-
-                let products;
-
-                if (page || size) {
-                    products = await cursor.skip(page * size).limit(size).toArray()
-
-                }
-
-                else {
-                    products = await cursor.toArray()
-
-                }
+//             })
 
 
-                res.send(products)
+//             app.get('/product-count', async (req, res) => {
+//                 const query = {}
+//                 const cursor = productsCollection.find(query)
 
+//                 const count = await productsCollection.estimatedDocumentCount()
+//                 res.send({ count })
 
-            })
-
-
-            app.get('/product-count', async (req, res) => {
-                const query = {}
-                const cursor = productsCollection.find(query)
-
-                const count = await productsCollection.estimatedDocumentCount()
-                res.send({ count })
-
-            })
+//             })
 
 
 
-        }
+//         }
 
 
-        finally {
-            // await client.close();
-        }
+//         finally {
+//             // await client.close();
+//         }
 
-    }
-    run().catch(console.dir);
-});
+//     }
+//     run().catch(console.dir);
+
+// });
+
+// httpsServer.listen(443, () => {
+//     console.log('HTTPS Server running on port 443');
+
+//     const run = async () => {
+//         try {
+//             await client.connect();
+//             const productsCollection = client.db("emajonsonNodeMongo").collection("products");
+//             console.log("db connected to mongo")
+
+//             // get product
+
+//             // get product
+
+//             app.get('/product', async (req, res) => {
+//                 const query = req.body
+//                 const page = parseInt(req.query.page)
+//                 const size = parseInt(req.query.size)
+
+
+
+//                 console.log(query)
+//                 const cursor = productsCollection.find(query)
+
+//                 let products;
+
+//                 if (page || size) {
+//                     products = await cursor.skip(page * size).limit(size).toArray()
+
+//                 }
+
+//                 else {
+//                     products = await cursor.toArray()
+
+//                 }
+
+
+//                 res.send(products)
+
+
+//             })
+
+
+//             app.get('/product-count', async (req, res) => {
+//                 const query = {}
+//                 const cursor = productsCollection.find(query)
+
+//                 const count = await productsCollection.estimatedDocumentCount()
+//                 res.send({ count })
+
+//             })
+
+
+
+//         }
+
+
+//         finally {
+//             // await client.close();
+//         }
+
+//     }
+//     run().catch(console.dir);
+// });
