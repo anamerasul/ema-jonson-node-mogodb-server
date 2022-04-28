@@ -1,13 +1,13 @@
-import express from "express"
-import cors from "cors"
-import "dotenv/config"
+// import express from "express"
+// import cors from "cors"
+// import "dotenv/config"
 
-import { MongoClient, ServerApiVersion, ObjectId } from 'mongodb';
+// import { MongoClient, ServerApiVersion, ObjectId } from 'mongodb';
 
-// const express = require('express');
-// const cors = require('cors');
-// const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
-// require('dotenv').config();
+const express = require('express');
+const cors = require('cors');
+const { MongoClient, ServerApiVersion, ObjectId } = require('mongodb');
+require('dotenv').config();
 
 
 // const https = require('https');
